@@ -1,8 +1,6 @@
 @extends('layouts.todos')
 @section('title', 'todos.index')
 
-@section('menubar')
-
 @section('content')
  @if (count($errors) > 0)
  <div>
