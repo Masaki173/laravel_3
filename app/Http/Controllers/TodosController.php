@@ -17,8 +17,10 @@ class TodosController extends Controller
         $form = $request->all();
         unset($form['_token']);
         $todo->fill($form)->save();
-
         return redirect('/todos');
     }
-
+    public function delete(Request $request){
+        Todo::find($request->id)->delete();
+        return redirect('/todos');
+    }
 }
