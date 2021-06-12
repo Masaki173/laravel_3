@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Todo;
 use Illuminate\Http\Request;
+use App\Http\Requests\TodoRequest;
 
 class TodosController extends Controller
 {
@@ -11,11 +12,12 @@ class TodosController extends Controller
         $items = Todo::all();
         return view('todos.index', compact('items'));
     }
-    public function create(Request $request){
+    public function store(TodoRequest $request){
         $todo = new Todo;
         $form = $request->all();
         unset($form['_token']);
         $todo->fill($form)->save();
+
         return redirect('/todos');
     }
 

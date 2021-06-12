@@ -8,7 +8,7 @@ class TodoRequest extends FormRequest
 {
     public function authorize()
     {
-    if ($this->path() == 'todos')
+    if ($this->path() == 'todos/create')
     {
         return true;
     } else {
