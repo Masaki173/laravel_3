@@ -23,9 +23,9 @@
    </form>
   </td>
   <td>
-   <form action="todos/del" method="post">
+   <form action="todos/del/{{$item->id}}" method="post">
    @csrf
-   <input type="hidden" name="id" value="{{$item->id}}">
+   <input type="hidden" name="id">
    <button type="submmit">削除</button>
    </form>
   </td>
@@ -34,8 +34,8 @@
  </table>
 <h1>新規タスクの追加</h1>
  <form action="todos/create" method ="post">
- @csrf
- <input type="text" name="content"></input>
- <button type=submit>追加</button>
+  @csrf
+  <input type="text" name="content"></input>
+  <button type=submit>追加</button>
  </form>
  @endsection

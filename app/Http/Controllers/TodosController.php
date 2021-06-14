@@ -19,8 +19,9 @@ class TodosController extends Controller
         $todo->fill($form)->save();
         return redirect('/todos');
     }
-    public function delete(Request $request){
-        Todo::find($request->id)->delete();
+    public function delete($id){
+        $item = Todo::findOrFail($id);
+        $item->delete();
         return redirect('/todos');
     }
 }
