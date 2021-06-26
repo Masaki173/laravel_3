@@ -12,4 +12,8 @@ class Todo extends Model
     {
         return $this->id . ':' . $this->content;
     }
+const STATUS = [
+  0 => ['button' => '作業中'],
+  1 => ['button' => '完了'],
+];
 }

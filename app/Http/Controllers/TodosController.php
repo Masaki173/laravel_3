@@ -24,4 +24,10 @@ class TodosController extends Controller
         $item->delete();
         return redirect('/todos');
     }
+    public function update(Request $request){
+         $item = Todo::findOrFail($request->id);
+         $item->status = ($request->status) ? null : 1;
+         $item->save();
+         return redirect('/todos');
+    }
 }
