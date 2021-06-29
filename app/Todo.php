@@ -10,10 +10,6 @@ class Todo extends Model
 
     public function getData()
     {
-        return $this->id . ':' . $this->content;
+        return $this->id . ':' . $this->content . $this->status;
     }
-const STATUS = [
-  0 => ['button' => '作業中'],
-  1 => ['button' => '完了'],
-];
 }

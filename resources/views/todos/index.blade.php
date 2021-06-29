@@ -18,14 +18,14 @@
    <td>{{$loop->iteration}}</td>
    <td>{{$item->content}}</td>
    <td>
-   <form action="/todos/update" method="post">
+   <form action="/todos/update/{{$item->id}}" method="post">
    @method('put')
    @csrf
-   @if ($item->status === null)
-   <input type="hidden" name="status" value="true">
+   @if ($item->status === 0)
+   <input type="hidden" name="status" value="1">
    <button type="submit">作業中</button>
    @elseif ($item->status === 1)
-   <input type="hidden" name="status" value="false">
+   <input type="hidden" name="status" value="0">
    <button type="submit">完了</button>  
    @endif
    </td>
