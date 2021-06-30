@@ -10,6 +10,6 @@ class Todo extends Model
 
     public function getData()
     {
-        return $this->id . ':' . $this->content;
+        return $this->id . ':' . $this->content . $this->status;
     }
 }

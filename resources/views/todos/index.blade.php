@@ -14,22 +14,30 @@
  <table>
   <tr><th>ID</th><th>コメント</th><th>状態</th></tr>
   @foreach ($items as $item)
-  <tr>
+<tr>
    <td>{{$loop->iteration}}</td>
    <td>{{$item->content}}</td>
-  <td>
-   <form>
-   <button>作業中</button>
-   </form>
-  </td>
-  <td>
-   <form action="todos/del/{{$item->id}}" method="post">
+   <td>
+   <form action="/todos/update/{{$item->id}}" method="post">
+   @method('put')
    @csrf
-   <input type="hidden" name="id">
-   <button type="submmit">削除</button>
+   @if ($item->status === 0)
+   <input type="hidden" name="status" value="1">
+   <button type="submit">作業中</button>
+   @elseif ($item->status === 1)
+   <input type="hidden" name="status" value="0">
+   <button type="submit">完了</button>  
+   @endif
+   </td>
    </form>
-  </td>
-  </tr>
+      <td>
+  <form action="/todos/del/{{$item->id}}" method="post">
+   @csrf
+  <input type="hidden" name="id">
+  <button type="submit">削除</button>
+   </form>
+</td>
+</tr>
   @endforeach
  </table>
 <h1>新規タスクの追加</h1>
