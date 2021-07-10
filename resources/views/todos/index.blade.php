@@ -11,10 +11,13 @@
    </ul>
  </div>
 @endif
+<label><input type="radio" name="radiostat" onclick="displayTodo()" checked>すべて</label>
+<label><input type="radio" name="radiostat" onclick="displayTodo()" id ="radioUndone" >作業中</label>
+<label><input type="radio" name="radiostat" onclick="displayTodo()" id="radioDone">完了</label>
  <table>
   <tr><th>ID</th><th>コメント</th><th>状態</th></tr>
   @foreach ($items as $item)
-<tr>
+<tr class="tasks">
    <td>{{$loop->iteration}}</td>
    <td>{{$item->content}}</td>
    <td>
@@ -22,11 +25,11 @@
    @method('put')
    @csrf
    @if ($item->status === 0)
-   <input type="hidden" name="status" value="1">
-   <button type="submit">作業中</button>
+   <input type="hidden" value="1" name="status">
+   <button type="submit" class="working">作業中</button>
    @elseif ($item->status === 1)
-   <input type="hidden" name="status" value="0">
-   <button type="submit">完了</button>  
+   <input type="hidden"  value="0" name="status">
+   <button type="submit" class="finish">完了</button> 
    @endif
    </td>
    </form>
